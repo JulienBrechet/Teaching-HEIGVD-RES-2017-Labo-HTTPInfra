@@ -1,0 +1,23 @@
+{
+  "name": "animals",
+  "version": "1.0.0",
+  "description": "Labo-HTTPInfra Step 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulienBrechet/Teaching-HEIGVD-RES-2017-Labo-HTTPInfra.git"
+  },
+  "author": "Julien Brêchet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JulienBrechet/Teaching-HEIGVD-RES-2017-Labo-HTTPInfra/issues"
+  },
+  "homepage": "https://github.com/JulienBrechet/Teaching-HEIGVD-RES-2017-Labo-HTTPInfra#readme",
+  "dependencies": {
+    "chance": "^1.0.8",
+    "express": "^4.15.3"
+  }
+}
