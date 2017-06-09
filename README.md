@@ -2,8 +2,14 @@
 ### Authors : Julien Brêchet and Adrien Marco
 ### Last update : 09.06.2017
 
-## Important !!!
+## Important !
 If you clone the repository, you will probably need to open the file `apache2-foreground` of the reverse-proxy image in Notepad and save it with **UNIX EOL**.
+
+You will need to install `chance.js` and `express.js` in the `src` repository of the express image. You can run those following commands :
+
+	npm install --save chance
+	npm install --save express
+	npm install express-generator -g
 
 ## Step 1: Static HTTP server with apache httpd
 
