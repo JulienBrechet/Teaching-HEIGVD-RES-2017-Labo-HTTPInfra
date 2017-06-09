@@ -1,6 +1,6 @@
 # RES - Labo-HTTPInfra report
 ### Authors : Julien Brêchet and Adrien Marco
-### Last update : 08.06.2017
+### Last update : 09.06.2017
 
 ## Step 1: Static HTTP server with apache httpd
 
@@ -150,7 +150,7 @@ Now we must create the script called by *index.html*. It is located in the `js` 
 
 ![Script animals.js](/images/animals.js.png)
 
-The field with the class `intro-text` is updated every 5 seconds with the name of the beast and which animal it is from the first animal of the JSON array `animals` returned by `express_static` (getJSON of */api/animals/*).
+The field with the class `intro-text` is updated every 5 seconds with the name of the beast and which animal it is from the first animal of the JSON array `animals` returned by `express_static` (*getJSON()* method used with path */api/animals/*).
 
 ### Rebuilding the apache-php image
 When we have created the script `animals.js` and updated `index.html`, we can go in `apache-php` and rebuild the apache-php image with the command `docker build -t res/apache_php .`.
@@ -194,3 +194,16 @@ Then we modify the *Dockerfile* because we need to copy `apache2-foreground` in 
 ![Dockerfile](/images/Dockerfile5.png)
 
 Now we can configure the apache-reverse-proxy dynamically when we run the container passing it 2 ENV variables.
+
+At first we run some containers based on *res/apache_php* image and some based on *res/express_animals* image. Here are the commands below :
+
+	docker run -d res/apache_php
+	docker run -d res/express_animals
+
+We can manually give them a name if we want with option `--name`. Then we find the IP address of the container we choose with the command `docker inspect name_of_container | grep -i ipaddress`. We need an IP address of an apache_static container and another IP address of a express_dynamic container that we will use with the reverse proxy.
+
+Once the two IP addresses noted in a corner, we can run the reverse proxy. We have for example `172.17.0.5` (port 80) as IP for the static container and `172.17.0.8` (port 5970) for the dynamic one. We can add those two IP addresses in our ENV variables `STATIC_APP` and `Dynamic_APP` with the `-e` parameter. Here is the command to run the reverse-proxy container :
+
+	docker run -d -p 9090:80 --name apache_rp1 -e STATIC_APP=172.17.0.5:80 -e DYNAMIC_APP=172.17.0.8:5970 res/apache_reverse_proxy
+
+Once the reverse proxy started, we can verify if all our configuration is working. It is the case and now the laboratory is done. We choosed to not implement bonus parts because in this end of semester we are a bit overworked.
