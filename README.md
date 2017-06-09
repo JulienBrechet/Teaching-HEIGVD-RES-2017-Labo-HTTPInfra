@@ -2,6 +2,9 @@
 ### Authors : Julien Brêchet and Adrien Marco
 ### Last update : 09.06.2017
 
+## Important !!!
+If you clone the repository, you will probably need to open the file `apache2-foreground` of the reverse-proxy image in Notepad and save it with **UNIX EOL**.
+
 ## Step 1: Static HTTP server with apache httpd
 
 ### Docker image and Dockerfile
@@ -206,4 +209,7 @@ Once the two IP addresses noted in a corner, we can run the reverse proxy. We ha
 
 	docker run -d -p 9090:80 --name apache_rp1 -e STATIC_APP=172.17.0.5:80 -e DYNAMIC_APP=172.17.0.8:5970 res/apache_reverse_proxy
 
-Once the reverse proxy started, we can verify if all our configuration is working. It is the case and now the laboratory is done. We choosed to not implement bonus parts because in this end of semester we are a bit overworked.
+Once the reverse proxy is running, we can verify if all our configuration is working. It is the case and now the laboratory is done. We choosed to not implement bonus parts because in this end of semester we are a bit overworked.
+
+Julien Brêchet
+Adrien Marco
