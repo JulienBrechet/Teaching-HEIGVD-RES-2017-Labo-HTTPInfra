@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+
 # Add setup for RES lab step 5
 echo "Setup for RES lab step 5."
 echo "Static app URL : $STATIC_APP"

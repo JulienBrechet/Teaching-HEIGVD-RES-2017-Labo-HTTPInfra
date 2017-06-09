@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/JulienBrechet/Teaching-HEIGVD-RES-2017-Labo-HTTPInfra#readme",
   "dependencies": {
-    "chance": "^1.0.8",
+    "chance": "^1.0.9",
     "express": "^4.15.3"
   }
 }
